@@ -1,0 +1,51 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.justiniano'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Core
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //Database
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.h2database:h2'
+
+    //Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    //Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    //JWT
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    //Refresh Token (JWT)
+    implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '9.7'
+
+    // SWAGGER (documentation api rest)
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,1 @@
+insert into categoria(descripcion) values ('Lacteos');
